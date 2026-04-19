@@ -8,3 +8,4 @@ lxml
 torch
 torchvision
 tqdm
+seaborn
