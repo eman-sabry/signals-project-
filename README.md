@@ -1,22 +1,128 @@
-# Sleep Stage Classification Project
+# Sleep Stage Classification using Deep Learning (EOG-R)
 
-## Project Overview
-This project focuses on developing an automated system for classifying sleep stages using deep learning. By analyzing multi-channel physiological signals—including Electroencephalogram (EEG), Electrooculogram (EOG), and Electromyogram (EMG)—the model aims to accurately identify different sleep phases (Wake, N1, N2, N3, and REM). This automation assists in diagnosing sleep disorders and enhances the efficiency of sleep studies.
+## Overview
 
-## Key Project Stages
-The project follows a structured pipeline to ensure robust data processing and model performance:
+This project presents a deep learning-based system for automatic sleep stage classification using physiological sleep signals.
 
-1. **Data Exploration**: Initial analysis and visualization of raw EDF signals and XML annotations to understand signal characteristics across different sleep stages.
-2. **Preprocessing**: 
-   - Downsampling signals to 100Hz for computational efficiency.
-   - Segmenting continuous recordings into standard 30-second epochs.
-   - Normalizing and splitting data into Training, Validation, and Testing sets.
-3. **Distribution Analysis**: Analyzing class distribution to address the inherent imbalance in sleep stage data.
-4. **Model Architecture**: Implementation of a hybrid Deep Learning model:
-   - **CNN Layers**: For spatial feature extraction from raw signals.
-   - **LSTM Layers**: For capturing temporal dependencies and sequential patterns.
-5. **Evaluation**: Assessing the model using Accuracy, Precision, Recall, F1-Score, and Confusion Matrices.
+The model analyzes the **EOG-R signal** from the MESA Sleep Dataset and classifies sleep into five stages:
 
+- Wake
+- N1
+- N2
+- N3
+- REM
+
+The goal is to automate traditional manual sleep scoring using deep learning.
+
+---
+
+## Problem Statement
+
+Traditional sleep stage scoring is:
+
+- Time-consuming
+- Expensive
+- Requires expert analysis
+- Prone to human error
+
+This project builds an automated deep learning model for sleep stage classification.
+
+---
+
+## Dataset
+
+### MESA Sleep Dataset
+
+A public medical dataset containing overnight sleep recordings.
+
+Includes:
+
+- EDF signal files
+- XML annotation files
+- Expert-labeled sleep stages
+
+Signals available:
+
+- EEG
+- EOG
+- EMG
+- ECG
+- Respiratory signals
+
+This project uses:
+
+**EOG-R only**
+
+---
+
+## Sleep Classes
+
+| Class | Description |
+|------|-------------|
+| Wake | Awake |
+| N1 | Light Sleep |
+| N2 | Intermediate Sleep |
+| N3 | Deep Sleep |
+| REM | Rapid Eye Movement |
+
+---
+
+## Workflow
+
+### 1. Data Visualization
+Visual inspection of raw signals and sleep stages.
+
+### 2. Data Split
+
+- Training: 60%
+- Validation: 20%
+- Testing: 20%
+
+Subject-level split to avoid data leakage.
+
+### 3. Preprocessing
+
+Applied preprocessing steps:
+
+- Channel selection (EOG-R)
+- Bandpass filtering (0.5–20 Hz)
+- Resampling to 100 Hz
+- Z-score normalization
+- Signal clipping
+- 30-second epoch segmentation
+
+Processed data stored as `.npz`.
+
+---
+
+## Model Architecture
+
+Custom hybrid architecture:
+
+- CNN
+- Residual Blocks
+- Squeeze-and-Excitation Attention
+- BiLSTM
+- Multi-Head Self Attention
+- Dense Classifier
+
+---
+
+
+## Key Contribution
+
+This work shows that effective sleep stage classification can be achieved using only the **EOG-R channel**, reducing dependence on full PSG systems.
+
+---
+
+
+
+## Author
+
+**Eman Sabry**  
+**Sara Mohamed**  
+Biomedical Engineering Student  
+Helwan University
 ## Requirements
 To run this project, ensure you have Python installed along with the following libraries:
 ```bash
